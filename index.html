@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue baby!</title>
+</head>
+<body>
+
+  <div id="root" class="container">
+
+    <h1> Introducción a Vue js</h1>
+    <!--Uso de v-model-->
+    <input type="text" id="input" v-model="message">
+    <p>El valor introducido es:  {{ message }}</p>
+
+    <hr />
+    <!--Leer lista y añadir elementos con Vue-->
+    <ul>
+      <li v-for="name in names" v-text="name"></li>
+    </ul>
+    <input type="text" v-model="newName">
+    <!--Alternativamente a v-on:click podemos usar @click o @ y el evento
+        desado. -->
+    <button v-on:click="addName">Añadir nombre!</button>
+
+    <hr />
+    <!--Alternativamente a v-bind:title podemos usar :title o : y el evento
+        desado. -->
+    <button v-bind:title="titleNow"> Pasa sobre mí </button>
+    <br />
+    <input type="checkbox" @click="toggleButton" v-text= "disText" >{{disText}}</input>
+    <br />
+    <button :disabled="buttonState"> Oportunidad </button>
+
+    <hr />
+
+    <h4>{{ reversedMessage }}</h4>
+
+    <h5>Todas las tareas</h5>
+
+    <ul>
+      <li v-for="task in tasks" ><input type="checkbox" :checked="task.completed" @click="toggleTask(task)">{{task.description}}</input></li>
+    </ul>
+
+    <h5>Tareas por hacer</h5>
+
+    <ul>
+      <li v-for="task in incompleteTasks" v-text="task.description"></li>
+    </ul>
+
+    <h5>Tareas realizadas</h5>
+
+    <ul>
+      <li v-for="task in completeTasks" v-text="task.description"></li>
+    </ul>
+
+    <hr />
+      <task-list></task-list>
+    <hr/>
+
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
